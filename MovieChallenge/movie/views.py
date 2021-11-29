@@ -1,31 +1,42 @@
+from django.views.generic import TemplateView, DetailView, ListView
 from django.shortcuts import render
 from django.http import HttpResponse
+from movie.models import *
 
 
-def movieCreate(request):
-    # return HttpResponse("movieCreate")
-    return render(request, '')
+class MovieList(ListView):
+    template_name = "movieList.html"
 
-def movieReviewDetail(request):
-    # return HttpResponse("movieReviewDetail")
-    return render(request, '')
+    def movie_list(request):
+        data = Movie.objects.all()
 
-def movieReviewCreate(request):
-    # return HttpResponse("movieReviewCreate")
-    return render(request, '')
+        movies = { "object_list" : data }
+        return render(request, "movieList.html", movies)
 
-def movieReviewRemove(request):
-    # return HttpResponse("movieReviewRemove")
-    return render(request, '')
 
-def movieReviewEdit(request):
-    # return HttpResponse("movieReviewEdit")
-    return render(request, '')
+class movieDetail(DetailView):
+    template_name = "movieDetail.html"
 
-def movieReviewVoteCreate(request):
+
+class movieReviewList(ListView):
+
+    def movie_review_create(request):
+        # return HttpResponse("movieReviewCreate")
+        return render(request, '')
+
+    def movie_review_remove(request):
+        # return HttpResponse("movieReviewRemove")
+        return render(request, '')
+
+    def movie_review_edit(request):
+        # return HttpResponse("movieReviewEdit")
+        return render(request, '')
+
+
+def movie_review_vote_create(request):
     # return HttpResponse("movieReviewVoteCreate")
     return render(request, '')
 
-def movieReviewVoteRemove(request):
+def movie_review_vote_remove(request):
     # return HttpResponse("movieReviewVoteRemove")
     return render(request, '')

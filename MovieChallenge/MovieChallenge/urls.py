@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from MovieChallenge.views import index
+from MovieChallenge.views import HomeView, form_valid
 
 urlpatterns = [
-    path('', index.as_view(), name='home'),
+    path('', HomeView.as_view(), name='home'),
     path('admin/', admin.site.urls),
+    path('movie/', include('movie.urls')),
+    path('search/', form_valid, name='searched'),
 ]

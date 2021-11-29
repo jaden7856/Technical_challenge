@@ -8,17 +8,16 @@ class Movie(models.Model):
     genres = models.CharField(max_length=100)
     summary = models.TextField(blank=True, null=True)
     reviews = models.CharField(max_length=200, blank=True, null=True)
-    create_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = "Movies"
     
 
 class MovieReviews(models.Model):
-    movie_id = models.ForeignKey("Movie", on_delete=models.CASCADE)
+    movie = models.ForeignKey("Movie", on_delete=models.CASCADE)
     text = models.TextField(blank=True, null=True)
     rating = models.CharField(max_length=50, blank=True, null=True)
-    create_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = "Reviews"

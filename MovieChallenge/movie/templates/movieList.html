@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Stock Searched List{% endblock %}
+
+{% block masthead %}
+    <div id="masthead">
+        <tr>
+            <td><h3>영화 상세</h3></td>
+            {% for i in movies%}
+            <form action="detail" method="post">
+                <input type="submit" name="id" value="{{ movies.id }}"
+                        onclick="location.href='{% url 'movie:movie_detail' %}'">
+            </form>
+            <li>Symbol : {{ movies.title }}</li>
+            <li>Price : {{ movies.year }}</li>
+            <li>Open : {{ movies.rating }}</li>
+            <li>Day_Min : {{ movies.genres }}</li>
+            <li>Day_Max : {{ movies.summary }}</li>
+            {% endfor %}
+        </tr>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link"
+                                             href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                    {% endif %}
+
+                    {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
