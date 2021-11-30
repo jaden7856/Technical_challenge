@@ -6,16 +6,16 @@
     <div id="masthead">
         <tr>
             <td><h3>영화 상세</h3></td>
-            {% for i in movies%}
-            <form action="detail" method="post">
-                <input type="submit" name="id" value="{{ movies.id }}"
-                        onclick="location.href='{% url 'movie:movie_detail' %}'">
-            </form>
-            <li>Symbol : {{ movies.title }}</li>
-            <li>Price : {{ movies.year }}</li>
-            <li>Open : {{ movies.rating }}</li>
-            <li>Day_Min : {{ movies.genres }}</li>
-            <li>Day_Max : {{ movies.summary }}</li>
+            {% for moive in movies%}
+                <form action="" method="post">
+                    <input type="submit" name="id" value="{{ movie.id }}"
+                            onclick="location.href='{% url 'movie:movie_detail' %}'">
+                </form>
+                <li>Title : {{ moive.title }}</li>
+                <li>Year : {{ moive.year }}</li>
+                <li>Rating : {{ moive.rating }}</li>
+                <li>Genres : {{ moive.genres }}</li>
+                <li>Summary : {{ moive.summary }}</li>
             {% endfor %}
         </tr>
     </div>
@@ -37,5 +37,9 @@
         </div>
     </div>
 {% endblock %}
+
+<script>
+    
+</script>
 
 {% block footer %}{% endblock %}

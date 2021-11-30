@@ -1,17 +1,17 @@
 from django.views.generic import TemplateView, DetailView, ListView
 from django.shortcuts import render
 from django.http import HttpResponse
+import sqlite3
+#from config import Config
 from movie.models import *
 
 
-class MovieList(ListView):
-    template_name = "movieList.html"
 
-    def movie_list(request):
-        data = Movie.objects.all()
 
-        movies = { "object_list" : data }
-        return render(request, "movieList.html", movies)
+def movie_list(request):
+    movies = Movie.objects.all()
+
+    return render(request, "movieList.html", {"movies" : movies})
 
 
 class movieDetail(DetailView):
